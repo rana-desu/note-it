@@ -1,0 +1,13 @@
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<div class="flex-row flash-message">
+    <div class="flex-row">
+        <img src="{{ url_for('static', filename='svg/cross.svg') }}" alt="cross">
+    </div>
+
+    <p class="center-txt is-danger">{{ messages[0] }}</p>
+</div>
+
+{% endif %}
+{% endwith %}

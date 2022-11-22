@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block logo %}
+    {% include './components/logo.html' %}
+{% endblock logo %}
+
+{% block content %}
+<main class="flex-row">
+
+    {% if not user.is_authenticated %}
+
+    <!-- Introduction to logged-out/non-registered users -->
+        <article class="intro flex-col">
+            <div class="intro-wrapper">
+                <h1>Welcome to Notes</h1>
+    
+                <p>A simple note-taking website made with flask web-framework and mysql database.</p>
+    
+                <p class="center-txt w-100">
+                    To continue, please 
+                    <a href="{{ url_for('auth.login') }}"> login </a> 
+                        or 
+                    <a href="{{ url_for('auth.signup') }}"> signup </a> 
+                    to the website.
+                </p>
+            </div>
+        </article>
+        
+    {% else %}
+
+    <!-- note submitting form -->
+        {% include './forms/note.html' %}
+
+    <!-- display all notes -->
+    <section class="notes-container">
+        {% if not notes %}
+            <div class="no-notes">
+                <img src="{{ url_for('static', filename='svg/bulb.svg') }}" alt="bulb">
+    
+                <h2 class="center-txt" style="font-size: 2.5rem;"> 
+                    Notes you add appear here.
+                </h2>
+            </div>
+
+        {% else %}
+
+            {% for note in notes[::-1] %}
+            
+            <!-- note structure -->
+            <section class="note">
+                <div class="title flex-row">
+                    <h4>{{ note.title }}</h4>
+
+                    <div class="pusher"></div>
+
+                    <div class="note-timestamp">
+                        <p>{{ note.date_created|format_datetime }}</p>
+                    </div>
+
+                    <div class="title-button-container flex-row">
+                        <!-- edit note button -->
+                        <a class="title-buttons" 
+                           href="/edit/{{ note['note_id'] }}" 
+                           style="display: none;">
+                        <img class="edit-button" 
+                             src="{{ url_for('static', filename='svg/edit-button.svg') }}"
+                             alt="edit-button">
+                        </a>
+                        
+                        <!-- delete note button  -->
+                        <a class="title-buttons" 
+                           href="/delete/{{ note['note_id'] }}" 
+                           style="display: none;">
+                        <img class="delete-button" 
+                             src="{{ url_for('static', filename='svg/delete-button.svg') }}" 
+                             alt="delete-button">
+                        </a>
+                    </div>
+                </div>
+
+                {% if note.description|length > 0 %}
+
+                    <div class="desc">
+                        <p>{{ note.description }}</p>
+                    </div>
+
+                {% endif %}
+            </section>
+
+            {% endfor %}
+
+        {% endif %}
+    </section>
+
+    {% endif %}
+
+    
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block logo %}
+    {% include './components/logo.html' %}
+{% endblock logo %}
+
+{% block content %}
+
+<section class="indiv-container">
+    <div class="form-container">
+        <h2 class="form-header center-txt">Edit your Note</h2>
+
+        <form class="form" method="POST" action="">
+            <input 
+                class = "form-input"
+                type = "text"
+                name = "title" 
+                placeholder = "Edit Title"
+                value = "{{ note.title }}"
+                autocomplete = "off"
+                required
+            />
+
+            <input 
+                class = "form-input"
+                type = "text" 
+                name = "desc"
+                placeholder = "Edit Description"
+                value = "{{ note.description }}"
+                autocomplete = "off" 
+            />
+
+            <div class="edit-form-button-div flex-row">
+                <button class="edit-form-button" type="submit">UPDATE</button>
+                
+                <a class="edit-form-button center-txt" 
+                   id="goback-button" 
+                   href="{{ url_for('notes.index') }}">
+                   GO BACK
+                </a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

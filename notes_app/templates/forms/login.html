@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block logo %}
+    {% include './components/logo.html' %}
+{% endblock logo %}
+
+{% block content %}
+
+<section class="indiv-container">
+    <div class="form-container">
+        <h2 class="form-header center-txt">Login</h2>
+
+        {% include './components/flash_messages.html' %}        
+
+        <form class="form" method="POST" action="">
+            <input 
+                class = "form-input"
+                type = "text"
+                name = "email" 
+                placeholder = "Email"
+                autocomplete = "off"
+                required 
+            />
+
+            <input 
+                class = "form-input"
+                type = "password" 
+                name = "password"
+                placeholder = "Password"
+                autocomplete = "off"
+            />
+                
+            <button class="note-form-button" type="submit">LOGIN</button>
+                
+            <span style="display: block; margin-top: 8px; font-size: 12px;">
+                  Not registered? 
+                  <a href="{{ url_for('auth.signup') }}"> Create an account </a>
+            </span>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

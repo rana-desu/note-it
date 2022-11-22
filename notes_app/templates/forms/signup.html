@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block logo %}
+    {% include './components/logo.html' %}
+{% endblock logo %}
+
+{% block content %}
+
+<section class="indiv-container">
+    <div class="form-container">
+       <h2 class="form-header center-txt">Sign up to Notes</h2>
+
+        {% include './components/flash_messages.html' %}
+
+       <form class="form" method="POST" action="">
+			<input 
+				class = "form-input"
+				type = "text"
+				name = "username" 
+				placeholder = "Username"
+				autocomplete = "off"
+				required 
+			/>
+                
+            <input 
+				class = "form-input"
+				type = "text"
+				name = "email"
+				placeholder = "Email"
+				autocomplete = "off"
+				required 
+			/>
+
+            <input 
+				class = "form-input"
+				type = "password" 
+				name = "password"
+				placeholder = "Password"
+				autocomplete = "off"
+				required 
+			/>
+
+            <input 
+				class = "form-input"
+				type = "password" 
+				name = "confirm-password"
+				placeholder = "Confirm Password"
+				autocomplete = "off"
+				required 
+			/>
+                
+            <button class="note-form-button" type="submit">SIGNUP</button>
+                
+            <span style="display: block; margin-top: 8px; font-size: 12px;">
+                  Already registered? 
+                  <a href="{{ url_for('auth.login') }}"> Login </a>
+            </span>
+        </form>
+    </div>
+</section>
+
+{% endblock content %}

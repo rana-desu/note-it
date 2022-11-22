@@ -1,0 +1,116 @@
+header {
+    background-color: var(--color-box);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    min-height: 4.6em;
+    padding: 0.7rem 0;
+}
+
+.container-fluid {
+    display: flex;
+    flex-basis: 80em;
+
+    width: 100%;
+    max-width: 85em;
+}
+
+.navbar-logo {
+    color: var(--white);
+
+    font-size: 1.75rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+
+    text-align: center;
+    align-self: center;
+    margin: 0 1.8em;
+}
+
+.navbar-search {
+    background-color: var(--color-primary);
+    outline: var(--input-outline);
+
+    display: flex;
+    justify-content: center;
+
+    width: 50%;
+    border-radius: 48px;
+    margin-right: 2em;
+}
+
+.search-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 48px;
+    padding: 0 8px;
+}
+
+.navbar-search > input {
+    background-color: var(--color-primary);
+    color: var(--color-text-placeholder);
+    caret-color: var(--color-text-placeholder);
+    font-size: 0.9rem;
+
+    width: 100%;
+    border-radius: inherit;
+    padding: 4px 0px;
+    margin-right: 1em;
+}
+
+
+.navbar-search > input::placeholder {
+    color: var(---color-text-placeholder);
+    font-weight: 400;
+}
+
+
+.navbar-buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 12em;
+}
+
+.navbar-buttons {
+    color: var(--color-text-primary);
+    background-color: var(--color-box);
+
+    display: inline-flex;
+    justify-content: center;
+    align-self: center;
+
+    font-size: 1rem;  
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer; 
+
+    border-radius: 4px;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+#signup-button {
+    background-color: var(--blue);
+}
+
+#signup-button:hover {
+    background-color: var(--dark-blue);
+}
+
+#login-button:hover {
+    text-decoration: underline;
+}
+
+#logout-button:hover {
+    text-decoration: underline;
+}

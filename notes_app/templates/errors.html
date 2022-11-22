@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="errors">
+        {% if error == 404 %}
+    
+            <h1>Error 404</h1>
+            <h3>Page not found.</h3>
+    
+        {% endif %}
+    
+        {% if error == 500 %}
+    
+            <h1>Error 500</h1>
+            <h3>Internal server error.</h3>
+    
+        {% endif %}
+    </section>
+
+{% endblock content %}
+

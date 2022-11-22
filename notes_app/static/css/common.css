@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans&family=Outfit&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
+
+:root {
+    --color-background-primary: #36393f;
+    --color-background-input: #202225;
+
+    --color-text-placeholder: #e8eaed;
+
+    --white: rgba(255, 255, 255, 0.842);
+    --teal: #507a85;
+    --light-teal:#8594af;
+    --blue: #5865f2;
+    --dark-blue: #4953c4;
+    --grey: #4f545c;
+    --light-grey: #5c6269;
+    --dark-grey: rgb(29, 28, 26);
+    --red: #ed4245;
+
+    --color-button-primary: rgb(69, 68, 68);
+    --color-button-hover-primary: rgba(92, 89, 89, 0.539);
+
+    --color-box: #2f3136;
+
+    --input-outline: rgba(255, 255, 255, 0.329) solid 2px;
+    --box-outline: 1px solid rgba(255, 255, 255, 0.068);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Raleway', sans-serif;
+    color: var(--white);
+    letter-spacing: 0.02rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--blue)
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2, h3 {
+    font-weight: bolder;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.navbar-brand-logo,
+.navbar-buttons,
+.note-counter {
+    user-select: none;
+}
+
+.center-txt {
+    text-align: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.pusher {
+    flex-grow: 1;
+}
+
+.divider {
+    border: 1px solid rgba(255, 255, 255, 0.123);
+    width: 100%; 
+}
+
+.is-danger {
+    color: #ed4245;
+}
+
+.indiv-container {
+    margin-top: 6.5em;
+}
+
+.prevent-select {
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}

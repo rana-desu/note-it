@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="icon" href="data:;base64,=">
+
+    <title>Notes</title>
+</head>
+
+<body class="flex-col">
+
+    <header>
+        <nav class="navbar prevent-select">
+            <div class="container-fluid">
+                <!-- website logo -->
+                {% block logo %}
+                {% endblock logo %}
+
+                <div class="pusher"></div>
+                
+                <!-- logout, login, and signup buttons -->
+                <div class="navbar-buttons-container">
+                    {% if user.is_authenticated %}
+
+                        <a href = "{{ url_for('auth.logout') }}" 
+                           class = "navbar-buttons" 
+                           id = "logout-button"> 
+                        logout
+                        </a>
+
+                    {% else %}
+
+                        <a href = "{{ url_for('auth.login') }}" 
+                           class = "navbar-buttons" 
+                           id = "login-button"> login </a>
+
+                        <a href = "{{ url_for('auth.signup') }}" 
+                           class = "navbar-buttons" 
+                           id = "signup-button"> signup </a>
+
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>
