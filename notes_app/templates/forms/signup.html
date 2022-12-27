@@ -13,45 +13,56 @@
         {% include './components/flash_messages.html' %}
 
        <form class="form" method="POST" action="">
-			<input 
-				class = "form-input"
-				type = "text"
-				name = "username" 
-				placeholder = "Username"
-				autocomplete = "off"
-				required 
-			/>
-                
-            <input 
-				class = "form-input"
-				type = "text"
-				name = "email"
-				placeholder = "Email"
-				autocomplete = "off"
-				required 
-			/>
+			{{ form.csrf_token }}
 
-            <input 
-				class = "form-input"
-				type = "password" 
-				name = "password"
-				placeholder = "Password"
-				autocomplete = "off"
-				required 
-			/>
+			<!-- Username Field -->
+			{{	
+				form.username(
+				class = "form-input", 
+				size = 30, 
+				placeholder = "Username",
+				autocomplete = "off",
+				required = False
+				)
+			}}
 
-            <input 
-				class = "form-input"
-				type = "password" 
-				name = "confirm-password"
-				placeholder = "Confirm Password"
-				autocomplete = "off"
-				required 
-			/>
+			<!-- Email Field -->
+			{{
+				form.email(
+					class = "form-input",
+					placeholder = "Email",
+					autocomplete = "off",
+					required = False
+				)
+			}}
+
+			<!-- Password Fields -->
+			{{
+				form.password(
+					class = "form-input",
+					placeholder = "Password",
+					autocomplete = "off",
+					required = False
+				)
+			}}
+
+			{{
+				form.confirm_password(
+					class = "form-input",
+					placeholder = "Confirm Password",
+					autocomplete = "off",
+					required = False
+				)
+			}}
+            
+			<!-- Submit Field -->
+			{{
+				form.submit(
+					class = "note-form-button"
+				)
+			}}
                 
-            <button class="note-form-button" type="submit">SIGNUP</button>
-                
-            <span style="display: block; margin-top: 8px; font-size: 12px;">
+            <span style="display: block; margin-top: 8px; font-size: 14px;">
                   Already registered? 
                   <a href="{{ url_for('auth.login') }}"> Login </a>
             </span>

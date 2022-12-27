@@ -2,6 +2,7 @@ import json
 from flask import Flask
 from . import commands
 
+
 def create_app():
     app = Flask(__name__)
 
@@ -19,5 +20,7 @@ def create_app():
     app.register_error_handler(404, errors.page_not_found)
     app.register_error_handler(500, errors.internal_server_error)
 
-    return app
+    from flask_wtf.csrf import CSRFProtect
+    csrf = CSRFProtect(app)
 
+    return app

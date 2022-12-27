@@ -13,26 +13,36 @@
         {% include './components/flash_messages.html' %}        
 
         <form class="form" method="POST" action="">
-            <input 
-                class = "form-input"
-                type = "text"
-                name = "email" 
-                placeholder = "Email"
-                autocomplete = "off"
-                required 
-            />
+            {{ form.csrf_token }}
+            
+            <!-- Email Field -->
+			{{
+				form.email(
+					class = "form-input",
+					placeholder = "Email",
+					autocomplete = "off",
+					required = False
+				)
+			}}
 
-            <input 
-                class = "form-input"
-                type = "password" 
-                name = "password"
-                placeholder = "Password"
-                autocomplete = "off"
-            />
+            <!-- Password Fields -->
+			{{
+				form.password(
+					class = "form-input",
+					placeholder = "Password",
+					autocomplete = "off",
+					required = False
+				)
+			}}
                 
-            <button class="note-form-button" type="submit">LOGIN</button>
+            <!-- Submit Field -->
+			{{
+				form.submit(
+					class = "note-form-button"
+				)
+			}}
                 
-            <span style="display: block; margin-top: 8px; font-size: 12px;">
+            <span style="display: block; margin-top: 8px; font-size: 14px;">
                   Not registered? 
                   <a href="{{ url_for('auth.signup') }}"> Create an account </a>
             </span>

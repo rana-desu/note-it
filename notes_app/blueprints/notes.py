@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, Flask
 from flask_login import login_required, current_user
 from notes_app.data import databaseHelper
+from notes_app.forms.notes import NoteForm
 from werkzeug.exceptions import Unauthorized
 import datetime
 
@@ -12,17 +13,26 @@ def register(app: Flask):
 
 @bp.route("/", methods=["GET", "POST"])
 def index():    
-    
-    if request.method == "POST":
+    """ 
+    Note dashboard for the website, accessible after logging in
+    """
+
+    form = NoteForm()
+
+    # POST request
+    if form.validate_on_submit():
+
+        # if user isn't logged in
         if not current_user.is_authenticated:
             raise Unauthorized()
         
+        # gathering data from note-form 
         data = request.form
+        print(data)
         title = data["title"]
-        desc = data["desc"]
-
+        desc = data["description"]
         
-        # inserting submitted note into database
+        # inserting submitted note into the database
         databaseHelper.insert_note(current_user.user_id, title, desc)
 
         return redirect(url_for("notes.index"))
@@ -30,7 +40,8 @@ def index():
     # fetching every note stored in the database
     notes = databaseHelper.all_notes(current_user.user_id) if current_user.is_authenticated else None
 
-    return render_template("main.html", notes = notes, user = current_user)
+    # GET request
+    return render_template("main.html", notes = notes, user = current_user, form = form)
     
 
 @bp.route("/delete/<int:note_id>", methods=["DELETE", "GET"])
@@ -47,10 +58,13 @@ def delete(note_id):
 @login_required
 def edit(note_id):
     
-    if request.method == "POST":
+    form = NoteForm()
+
+    # POST request
+    if form.validate_on_submit():
         data = request.form
         title = data["title"]
-        desc = data["desc"]
+        desc = data["description"]
 
         # updating attribute's values in database
         databaseHelper.edit_note(title, desc, note_id)
@@ -60,7 +74,8 @@ def edit(note_id):
     # fetching the updated note from database
     current_note = databaseHelper.fetch_note(note_id)[0]
 
-    return render_template("./forms/edit.html", note = current_note, user = current_user)
+    # GET request
+    return render_template("./forms/edit.html", note = current_note, user = current_user, form = form)
 
 
 @bp.app_template_filter("format_datetime")

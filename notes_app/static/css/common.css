@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Noto+Sans&family=Outfit&family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Raleway:wght@400;500;700&display=swap');
 :root {
     --color-background-primary: #36393f;
     --color-background-input: #202225;
@@ -102,4 +101,9 @@ input {
 
 .hide {
     display: none;
+}
+
+footer {
+    height: 10em;
+    padding: 32px;
 }

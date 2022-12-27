@@ -3,27 +3,34 @@
         <h2 class="form-header center-txt">Take a Note</h2>
 
         <form class="form" method="POST">
+            {{ form.csrf_token }}
+
             <div class="input-container">
-                <input 
-                    class = "form-input"
-                    type = "text"
-                    name = "title" 
-                    placeholder = "Title"
-                    autocomplete = "off"    
-                    maxlength = "62"
-                    required 
-                />
+                <!-- title field -->
+                {{ 
+                    form.title(
+                        class = "form-input",
+                        placeholder = "Title",
+                        autocomplete = "off"
+                    )
+                }}
                 
-                <input 
-                    class = "form-input"
-                    type = "text" 
-                    name = "desc"
-                    placeholder = "Description"
-                    autocomplete = "off" 
-                />
+                <!-- description field -->
+                {{
+                    form.description(
+                        class = "form-input",
+                        placeholder = "Description",
+                        autocomplete = "off"
+                    )
+                }}
             </div>
 
-            <button class="note-form-button">SUBMIT</button>
+            <!-- submit field -->
+            {{
+                form.submit(
+                    class = "note-form-button"
+                )
+            }}
         </form>
     </div>
 </aside>

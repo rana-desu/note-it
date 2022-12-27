@@ -1,13 +1,51 @@
-{% with messages = get_flashed_messages() %}
-{% if messages %}
+{% if form.errors.items() | length > 0 %}
 
-<div class="flex-row flash-message">
-    <div class="flex-row">
-        <img src="{{ url_for('static', filename='svg/cross.svg') }}" alt="cross">
+<div class="errors-container">
+
+    {% for field, errors in form.errors.items() %}
+    <div class="flex-row error-messages">
+        
+        <div class="flex-row">
+            <img src="{{ url_for('static', filename='svg/cross.svg') }}" alt="cross">
+        </div>
+    
+        {{ ', '.join(errors) }}
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+
+            {% endif %}
+        {% endwith %}
+
     </div>
+    {% endfor %}
 
-    <p class="center-txt is-danger">{{ messages[0] }}</p>
 </div>
-
+    
 {% endif %}
+
+{% with messages = get_flashed_messages() %}
+
+    {% if messages %}
+    <div class="errors-container">
+        <div class="flex-row error-messages">
+            <div class="flex-row">
+                <img src="{{ url_for('static', filename='svg/cross.svg') }}" alt="cross">
+            </div>
+    
+            {% if messages %}
+                
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
 {% endwith %}
