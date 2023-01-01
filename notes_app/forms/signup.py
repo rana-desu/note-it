@@ -71,3 +71,4 @@ class SignUpForm(FlaskForm):
     )
 
     submit = SubmitField("SIGNUP")
+    

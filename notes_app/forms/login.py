@@ -11,5 +11,7 @@ class LogInForm(FlaskForm):
             ),
         ]
     )
+
     password = PasswordField("Password")
     submit = SubmitField("LOGIN")
+    

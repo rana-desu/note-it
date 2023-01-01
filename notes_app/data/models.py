@@ -2,6 +2,7 @@ from flask_login import UserMixin
 from dataclasses import dataclass
 import datetime
 
+
 @dataclass
 class User(UserMixin):
     user_id: int
@@ -15,6 +16,7 @@ class User(UserMixin):
 
     def get_id(self):
         return self.email
+
 
 @dataclass
 class Note:

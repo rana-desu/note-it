@@ -10,7 +10,7 @@ bp = Blueprint("auth", __name__)
 
 def register(app: Flask):
     """ 
-    registers the app for login authentication
+    registers the blueprint in the flask app with login authentication
     """
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"

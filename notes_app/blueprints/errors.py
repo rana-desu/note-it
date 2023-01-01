@@ -8,3 +8,4 @@ def page_not_found(e):
 def internal_server_error(e):
     error_code = 500    
     return render_template("errors.html", error = error_code, user = current_user), 500
+    
